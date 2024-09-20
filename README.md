@@ -38,12 +38,10 @@ Um novo projeto Flutter
                     http/
 
             useCases/
-                auth/
                 controllers/
 
             domain/
                 entities/
-                dto/
             
             presentation/
                 pages/
