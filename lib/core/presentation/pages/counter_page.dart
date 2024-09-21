@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_project/core/domain/entities/counter_domain.dart';
-import 'package:test_project/core/presentation/cubit/counter_cubit.dart';
+import 'package:test_project/core/presentation/cubit/counter/counter_cubit.dart';
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key, required this.title});
