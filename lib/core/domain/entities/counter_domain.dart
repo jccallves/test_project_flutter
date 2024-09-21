@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Counter {
+import 'package:equatable/equatable.dart';
+
+class Counter extends Equatable {
   final int counter;
-  Counter({
+  const Counter({
     required this.counter,
   });
 
@@ -44,4 +46,7 @@ class Counter {
 
   @override
   int get hashCode => counter.hashCode;
+
+  @override
+  List<Object?> get props => [counter];
 }

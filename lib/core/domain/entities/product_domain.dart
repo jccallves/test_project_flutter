@@ -1,10 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Product {
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+
+@immutable
+class Product extends Equatable {
   final int id;
   final String name;
-  Product({required this.id, required this.name});
+  const Product({required this.id, required this.name});
 
   Product copyWith({
     int? id,
@@ -47,4 +51,7 @@ class Product {
 
   @override
   int get hashCode => id.hashCode ^ name.hashCode;
+
+  @override
+  List<Object?> get props => [id, name];
 }
