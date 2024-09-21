@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
+import 'package:test_project/core/application/services/http/logger/log.dart';
 import 'package:test_project/core/domain/entities/counter_domain.dart';
 import 'package:test_project/core/presentation/cubit/counter/counter_cubit.dart';
 
@@ -13,6 +15,8 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+  final log = getLogger('Página', 'CounterPage');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +36,18 @@ class _CounterPageState extends State<CounterPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: context.read<CounterCubit>().increment,
+            onPressed: () => {
+              log.i("Usuário incrementou o contador."),
+              context.read<CounterCubit>().increment(),
+            },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: context.read<CounterCubit>().decrement,
+            onPressed: () => {
+              context.read<CounterCubit>().decrement,
+              log.i("Usuário decrementou o contador."),
+            },
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
