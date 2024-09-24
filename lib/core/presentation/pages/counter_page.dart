@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_project/core/application/services/http/logger/log.dart';
 import 'package:test_project/core/domain/entities/counter_domain.dart';
 import 'package:test_project/core/presentation/cubit/counter/counter_cubit.dart';
 
 class CounterPage extends StatefulWidget {
-  const CounterPage({super.key, required this.title});
-
-  final String title;
+  const CounterPage({super.key});
 
   @override
   State<CounterPage> createState() => _CounterPageState();
@@ -15,19 +14,30 @@ class CounterPage extends StatefulWidget {
 
 class _CounterPageState extends State<CounterPage> {
   final log = getLogger('Página', 'CounterPage');
-
+  final String title = 'Counter Page';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(title),
       ),
-      body: Center(
-        child: BlocBuilder<CounterCubit, Counter>(
-          builder: (context, state) {
-            return Text(state.counter.toString());
-          },
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: BlocBuilder<CounterCubit, Counter>(
+                builder: (context, state) {
+                  return Text(state.counter.toString());
+                },
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => context.go('/users'),
+              child: const Text('Go to the User Page'),
+            ),
+          ],
         ),
       ),
       floatingActionButton: Row(
