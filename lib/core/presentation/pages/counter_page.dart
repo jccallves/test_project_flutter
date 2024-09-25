@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:test_project/core/application/services/http/logger/log.dart';
 import 'package:test_project/core/domain/entities/counter_domain.dart';
 import 'package:test_project/core/presentation/cubit/counter/counter_cubit.dart';
@@ -17,13 +18,15 @@ class _CounterPageState extends State<CounterPage> {
   final String title = 'Counter Page';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
-      body: Container(
-        child: Column(
+    return DefaultTabController(
+      animationDuration: Duration.zero,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(title, style: GoogleFonts.acme()),
+        ),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
@@ -35,32 +38,32 @@ class _CounterPageState extends State<CounterPage> {
             ),
             ElevatedButton(
               onPressed: () => context.go('/users'),
-              child: const Text('Go to the User Page'),
+              child: Text('Go to the User Page', style: GoogleFonts.abel()),
             ),
           ],
         ),
-      ),
-      floatingActionButton: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            onPressed: () => {
-              log.i("Usuário incrementou o contador."),
-              context.read<CounterCubit>().increment(),
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            onPressed: () => {
-              context.read<CounterCubit>().decrement,
-              log.i("Usuário decrementou o contador."),
-            },
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
-          ),
-        ],
+        floatingActionButton: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton(
+              onPressed: () => {
+                log.i("Usuário incrementou o contador."),
+                context.read<CounterCubit>().increment(),
+              },
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ),
+            FloatingActionButton(
+              onPressed: () => {
+                context.read<CounterCubit>().decrement,
+                log.i("Usuário decrementou o contador."),
+              },
+              tooltip: 'Decrement',
+              child: const Icon(Icons.remove),
+            ),
+          ],
+        ),
       ),
     );
   }

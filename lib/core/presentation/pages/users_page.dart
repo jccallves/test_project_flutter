@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class UsersPage extends StatelessWidget {
   /// Constructs a [HomeScreen]
@@ -8,11 +9,15 @@ class UsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Users Page Screen')),
+      appBar:
+          AppBar(title: Text('Users Page Screen', style: GoogleFonts.alata())),
       body: Center(
         child: ElevatedButton(
           onPressed: () => context.go('/products'),
-          child: const Text('Go to the Product screen'),
+          child: Text(
+            'Go to the Product screen',
+            style: GoogleFonts.allura(),
+          ),
         ),
       ),
     );
