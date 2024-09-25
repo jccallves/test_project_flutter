@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:test_project/core/application/services/http/logger/log.dart';
 import 'package:test_project/core/domain/entities/counter_domain.dart';
 import 'package:test_project/core/presentation/cubit/counter/counter_cubit.dart';
+import 'package:test_project/core/presentation/cubit/theme/cubit/theme_cubit.dart';
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
@@ -16,15 +16,17 @@ class CounterPage extends StatefulWidget {
 class _CounterPageState extends State<CounterPage> {
   final log = getLogger('Página', 'CounterPage');
   final String title = 'Counter Page';
+
   @override
   Widget build(BuildContext context) {
+    final isLightMode = Theme.of(context).brightness == Brightness.light;
     return DefaultTabController(
       animationDuration: Duration.zero,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(title, style: GoogleFonts.acme()),
+          title: Text(title),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +51,24 @@ class _CounterPageState extends State<CounterPage> {
                     ),
                   )
               },
-              child: Text('Go to the User Page', style: GoogleFonts.abel()),
+              child: const Text('Go to the User Page'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  isLightMode ? 'Light Mode' : 'Dark Mode',
+                  style: TextStyle(
+                      color: isLightMode
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.inverseSurface),
+                ),
+                Switch(
+                    value: !isLightMode,
+                    onChanged: (isDarkMode) {
+                      context.read<ThemeCubit>().toogleTheme(!isDarkMode);
+                    }),
+              ],
             ),
           ],
         ),
