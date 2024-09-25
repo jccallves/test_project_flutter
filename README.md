@@ -62,3 +62,11 @@ Um novo projeto Flutter
     - google_fonts
     - infinite_scroll_pagination
     - Firebase Remote Config
+    - Awesome Snackbar Content
+    - Animations
+    - Neopop
+    - PDFx
+    - Material Floating Search Bar
+    - Toastification
+    - Flutter Card Swiper
+    - Native Storage

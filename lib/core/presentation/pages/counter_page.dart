@@ -37,7 +37,18 @@ class _CounterPageState extends State<CounterPage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () => context.go('/users'),
+              onPressed: () => {
+                context.go('/users'),
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.lightBlue[700],
+                      content: const Text('Flutter!'),
+                      action: SnackBarAction(label: 'Undo', onPressed: () {}),
+                    ),
+                  )
+              },
               child: Text('Go to the User Page', style: GoogleFonts.abel()),
             ),
           ],
