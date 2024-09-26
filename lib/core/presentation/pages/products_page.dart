@@ -10,16 +10,14 @@ class ProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
+          title: const Text(
         'Products Page',
-        style: GoogleFonts.gasoekOne(),
       )),
       body: Center(
         child: ElevatedButton(
           onPressed: () => context.go('/'),
-          child: Text(
+          child: const Text(
             'Go back to the Home Page',
-            style: GoogleFonts.nobile(),
           ),
         ),
       ),

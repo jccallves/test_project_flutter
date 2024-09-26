@@ -65,8 +65,8 @@ class _CounterPageState extends State<CounterPage> {
                 ),
                 Switch(
                     value: !isLightMode,
-                    onChanged: (isDarkMode) {
-                      context.read<ThemeCubit>().toogleTheme(!isDarkMode);
+                    onChanged: (isLightMode) {
+                      context.read<ThemeCubit>().toogleTheme(!isLightMode);
                     }),
               ],
             ),

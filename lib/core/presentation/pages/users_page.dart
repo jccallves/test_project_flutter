@@ -9,14 +9,35 @@ class UsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: Text('Users Page Screen', style: GoogleFonts.alata())),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go('/products'),
-          child: Text(
-            'Go to the Product screen',
-            style: GoogleFonts.allura(),
+      appBar: AppBar(title: const Text('Users Page Screen')),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment(0.8, 1),
+          colors: <Color>[
+            Color(0xff6d2212),
+            Color(0xff7b2c1b),
+            //Color(0xff9b4430),
+            //Color(0xffffb4a4),
+            //Color(0xff823d00),
+            // Color(0xffa8591f),
+            //Color(0xffb05f25),
+            // Color(0xffb05f25),
+            // Color(0xffffb689),
+            Color(0xff514318),
+            // Color(0xff6d5e30),
+            // Color(0xff776738),
+            //Color(0xffdac58d),
+          ],
+          tileMode: TileMode.mirror,
+        )),
+        child: Center(
+          child: ElevatedButton(
+            onPressed: () => context.go('/products'),
+            child: const Text(
+              'Go to the Product screen',
+            ),
           ),
         ),
       ),
