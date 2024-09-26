@@ -70,3 +70,8 @@ Um novo projeto Flutter
     - Toastification
     - Flutter Card Swiper
     - Native Storage
+
+
+## Referências
+    - Light theme / Dark theme : https://www.youtube.com/watch?v=LHocQR95Sxc&ab_channel=RipplesCode
+    - Cubit (flutter_bloc): https://www.youtube.com/watch?v=jW6npWvWcNI&pp=ygUFY3ViaXQ%3D

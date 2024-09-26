@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ProductCubit(),
         ),
         BlocProvider(
-          create: (context) => ThemeCubit(),
+          create: (context) => ThemeCubit()..setInitialTheme(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeDomain>(
